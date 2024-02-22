@@ -14,10 +14,10 @@ type myInvoiceServer struct {
 	invoicer.UnimplementedInvoicerServer
 }
 
-func (s myInvoiceServer) Create(context.Context, *invoicer.CreateRequest) (*invoicer.CreateResponse, error) {
+func (s myInvoiceServer) Create(ctx context.Context, req *invoicer.CreateRequest) (*invoicer.CreateResponse, error) {
 
 	return &invoicer.CreateResponse{
-		Pdf:  []byte("test"),
+		Pdf:  []byte(req.From),
 		Docx: []byte("test"),
 	}, nil
 }
